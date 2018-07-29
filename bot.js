@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setPresence({game: {name: "Version 1.14", type: 1}});
+  client.user.setPresence({game: {name: "Version 1.15", type: 1}});
 
 });
 
@@ -296,7 +296,8 @@ if(command === "requestban") {
   const embed = new Discord.RichEmbed()
     .setColor('#ff0000')
     .setTitle('Ban Request')
-    .setDescription('TEST HUE')
+    .setDescription('Reporter: ' `${message.author.username}#${message.author.discriminator}`
+		    'Information: ' `${sayMessage}`)
     .addField('Reporter:', `${message.author.username}#${message.author.discriminator}`)
     .addField('Information:', `${sayMessage}`)
   return message.guild.channels.get(modlog.id).send({embed});

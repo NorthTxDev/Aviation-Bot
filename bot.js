@@ -274,31 +274,6 @@ if(command === "purge") {
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
 
-if(command === "embed") {
-let modlog = message.guild.channels.find('name', 'moderation-log');
-    if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
-      return message.reply("Sorry, you don't have permissions to use this!");
-
-      const sayMessage = args.join(" ");
-
-      let esayEmbed = new Discord.RichEmbed()
-      .setTitle("Bot Embed")
-      .setColor("#0537ff")
-      .addField("Message", `${sayMessage}`)
-      .setTimestamp();
-
-      const esayMessage = args.join(" ");
-      message.delete().catch(O_o=>{});
-      message.channel.send(esayEmbed);
-      const embed = new Discord.RichEmbed()
-        .setColor(0x00AE86)
-        .addField('Action:', 'Embed Command')
-        .addField('Text:', `${sayMessage}`)
-        .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
-      return message.guild.channels.get(modlog.id).send({embed});
-
-  }
-
 if (command==="disagreement") {
 	let modlog = message.channel
 	var mentioned = message.mentions.users.first()
@@ -310,22 +285,28 @@ if (command==="disagreement") {
  	return message.guild.channels.get(modlog.id).send({embed});
 }
 
-if (command==="reqeustban") {
-  if(!message.member.roles.some(r=>["Middle Class Citizen"].includes(r.name)) )
+if(command === "requestban") {
+  let modlog = message.guild.channels.find('name', 'moderation-log');
+  let reqban = message.guild.channels.find('name', 'ban-requests');
+  if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
-  let modlog = message.guild.channels.find('name', 'ban-requests');
-  let j = "```"
-  let shiftlog = args.slice(0).join(' ');
-  message.reply("Ban request successfully sent!");
-  message.delete().catch(O_o=>{});
-  message.author.send(message.author+j+shiftlog+j)
-  const embed = new Discord.RichEmbed()
-       .setColor(0x00AE86)
-       .addField("Requester: ", message.author)
-       .addField('Information', j+shiftlog+j)
-  return message.guild.channels.get(modlog.id).send({embed});
-}
 
+  const sayMessage = args.join(" ");
+  message.delete().catch(O_o=>{});
+	
+  const embed2 = new Discord.RichEmbed()
+    .setColor('#ff0000')
+    .addField('Reporter:', `${message.author.username}#${message.author.discriminator}`)
+    .addField('Information:', `${sayMessage}`)
+  message.guild.channels.get(reqban.id).send({embed});
+
+  const embed = new Discord.RichEmbed()
+    .setColor('#ff0000')
+    .addField('Reporter:', `${message.author.username}#${message.author.discriminator}`)
+    .addField('Information:', `${sayMessage}`)
+  return message.guild.channels.get(modlog.id).send({embed});
+
+};
 if(command === "say") {
   let modlog = message.guild.channels.find('name', 'moderation-log');
   if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )

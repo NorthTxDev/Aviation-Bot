@@ -22,18 +22,6 @@ client.on("messageDelete", (messageDelete) => {
  return messageDelete.guild.channels.get(modlog.id).send({embed});
 });
 
-client.on("messageUpdate", (messageUpdate) => {
- let modlog = messageUpdate.guild.channels.find('name', 'moderation-log');
- const embed = new Discord.RichEmbed()
-  .setColor(0x00AE86)
-   .addField('Action:', 'Message Updated' )
-   .addField('User:', messageUpdate.author.tag)
-   .addField('Message Old Content:', messageUpdate.oldMessage)
-   .addField('Message New Content:', messageUpdate.newMessage)
-   .addField('Channel', messageUpdate.channel);
- return messageUpdate.guild.channels.get(modlog.id).send({embed});
-});
-
 client.on("guildDelete", guild => {
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
 });

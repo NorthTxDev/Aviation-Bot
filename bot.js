@@ -59,7 +59,7 @@ const embed = new Discord.RichEmbed()
   .addField("Ping","Bot replies with server/API stats.")
   //.addField("AddNSFW","Adds NSFW role, so you may access the channel.")
   //.addField("RemoveNSFW","Removes NSFW role")
-  .addField("Lock","Locks channel where as only users with the Administrator role can speak in it.")
+  .addField("Lock","Locks channel where as only users with the Moderator role can speak in it.")
   .addField("Unlock","Unlocks the channel")
   .addField("Say [term]","Bot repeats term.")
   .addField("Join","Summons the bot to your current voice channel! (no current music commands yet however)")
@@ -220,7 +220,7 @@ if (command==="shutdown") {
 
 if (command == "lock") {
   let modlog = message.guild.channels.find('name', 'moderation-log');
-  if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
 	let role = message.guild.roles.find("name", "Verified");
 	message.channel.overwritePermissions(
@@ -242,8 +242,8 @@ return message.guild.channels.get(modlog.id).send({embed});
 };
 
 if (command == "unlock") {
-  let modlog = message.guild.channels.find('name', 'mod-log');
-	if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
+  let modlog = message.guild.channels.find('name', 'moderation-log');
+	if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
 	let role = message.guild.roles.find("name", "Verified");
 	message.channel.overwritePermissions(
@@ -368,7 +368,7 @@ if (command==="reqeustban") {
 }
 
 if(command === "say") {
-  let modlog = message.guild.channels.find('name', 'mod-log');
+  let modlog = message.guild.channels.find('name', 'moderation-log');
   if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
 

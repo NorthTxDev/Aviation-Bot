@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setPresence({game: {name: "Version 1.195", type: 1}});
+  client.user.setPresence({game: {name: "Version 1.196", type: 1}});
 
 });
 
@@ -35,33 +35,6 @@ client.on("message", async message => {
 
 if (command=== "help") {
   let channel = message.author
-  message.reply("You've been sent a list of commands in your DMs!")
-const embed = new Discord.RichEmbed()
-  .setColor("#ff5900")
-  .addField("**The prefix for this bot is:**","!")
-  .addField("You can contact the owner of this bot on their Discord:","NorthTx_Dev#4196")
-  .addField("***MIDDLE CLASS CITIZEN ONLY COMMANDS***","Below is the list of civilian only commands.")
-  .addField("!Ping","Bot replies with server/API stats.")
-  .addField("!DiscordInvite","Replys with the Discord Server Invite")
-  .addField("!Report [@user] [Reason/Proof]","Reports a user to moderators for breaking a discord rule.")
-  .addField("!Requestban [RblxUsername:RblxUserID] [Reason/Proof]","Requsts a ban on a subject for breaking a rule in game. (Logging, Exploiting)")
-  .addField("***MODERATOR ONLY COMMANDS***","Below is the list of moderator only commands.")
-  .addField("!Kick [@user] [Reason/Proof]","Kicks a user from the discord.")
-  .addField("!Ban [@user] [Reason/Proof]","Bans a user from the discord.")
-  .addField("!Lock","Locks the channel command was used in.")
-  .addField("!Unlock","Unlocks the channel command was used in.")
-  .addField("!Purge [Number]","Deletes [Number] of messages from channel.")
-  .addField("!Say [Message]","Repeats a message to make it fancy!")
-  .addField("!Bean [@user]","Joke Command")
-  .addField("!Deport [@user] [Reason]","Kicks user from server but sends an invite back. - Joke Command.")
-  .addField("***OWNER ONLY COMMANDS***","Below is a list of bot owner only commands!")
-  .addField("!Shutdown","Shuts the bot down in case of a hack or such things.")
-  .addField("!Setgame [Message]","Sets the bots [Playing: ______]")
-return channel.send({embed}).catch(console.error);
-};
-	
-if (command=== "botinfoset") {
-  let channel = message.channel
   message.reply("You've been sent a list of commands in your DMs!")
 const embed = new Discord.RichEmbed()
   .setColor("#ff5900")
@@ -275,8 +248,8 @@ if (command == "poll") {
   let modlog = message.guild.channels.find('name', 'polls');
   if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
-message.reply("Poll successfully Created.")
-
+	
+	message.reply("Poll successfully Created.")
 	const sayMessage = args.join(" ");
         message.delete().catch(O_o=>{});
 	
@@ -284,10 +257,10 @@ const embed = new Discord.RichEmbed()
   .setColor("#0026ff")
   .setTitle('Poll')
   .setDescription(sayMessage)
-return message.guild.channels.get(modlog.id).send({embed});
+message.guild.channels.get(modlog.id).send({embed});
 embed.react("👍")
 embed.react("✊")
-embed.react("👎")
+return embed.react("👎")
 };
 
 

@@ -267,6 +267,32 @@ const embed = new Discord.RichEmbed()
   .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
 return message.guild.channels.get(modlog.id).send({embed});
 };
+	
+	
+	
+	
+if (command == "Poll") {
+  let modlog = message.guild.channels.find('name', 'polls');
+  if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
+      return message.reply("Sorry, you don't have permissions to use this!");
+message.reply("Poll successfully Created.")
+
+	const sayMessage = args.join(" ");
+        message.delete().catch(O_o=>{});
+	
+const embed = new Discord.RichEmbed()
+  .setColor("#0026ff")
+  .setTitle('Poll')
+  .addDescription(sayMessage)
+return message.guild.channels.get(modlog.id).send({embed});
+embed.react("👍")
+embed.react("✊")
+embed.react("👎")
+};
+
+
+	
+	
 
 
 if (command === "bean") {

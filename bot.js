@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setPresence({game: {name: "Version 1.16", type: 1}});
+  client.user.setPresence({game: {name: "Version 1.165", type: 1}});
 
 });
 
@@ -283,7 +283,7 @@ if (command==="disagreement") {
    		 .addField('Group:', `https://www.roblox.com/My/Groups.aspx?gid=4297537`)
     	 .addField('Leave Group:', `https://gyazo.com/9752020486d35af7c744db1854b7bcae`)
  	return message.guild.channels.get(modlog.id).send({embed});
-}
+};
 	
 if (command==="report") {
   let modlog = message.guild.channels.find('name', 'reports');

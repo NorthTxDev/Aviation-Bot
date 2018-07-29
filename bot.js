@@ -245,22 +245,22 @@ return message.guild.channels.get(modlog.id).send({embed});
 	
 	
 if (command == "poll") {
-  let modlog = message.guild.channels.find('name', 'polls');
+  let modlog = message.guild.channels.find('name', 'moderation-logs');
   if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
 	
-	message.reply("Poll successfully Created.")
 	const sayMessage = args.join(" ");
-        message.delete().catch(O_o=>{});
+	message.reply(sayMessage)
+	message.react("👍")
+	message.react("✊")
+	message.react("👎")
 	
 const embed = new Discord.RichEmbed()
   .setColor("#0026ff")
-  .setTitle('Poll')
+  .setTitle('Poll Created')
   .setDescription(sayMessage)
-message.guild.channels.get(modlog.id).send({embed});
-embed.react("👍")
-embed.react("✊")
-return embed.react("👎")
+return message.guild.channels.get(modlog.id).send({embed});
+
 };
 
 

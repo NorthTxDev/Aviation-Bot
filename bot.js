@@ -43,7 +43,7 @@ const embed = new Discord.RichEmbed()
   .addField("***MIDDLE CLASS CITIZEN ONLY COMMANDS***","Below is the list of civilian only commands.")
   .addField("!Ping","Bot replies with server/API stats.")
   .addField("!DiscordInvite","Reply's with the Discord Server Invite
-  .addField("!Report [@user] [Reason/Proof]","Reports a user to moderator's for breaking a discord rule.")
+  .addField("!Report [@user] [Reason/Proof]","Reports a user to moderators for breaking a discord rule.")
   .addField("!Requestban [RblxUsername:RblxUserID] [Reason/Proof]","Requsts a ban on a subject for breaking a rule in game. (Logging, Exploiting)")
   .addField("***MODERATOR ONLY COMMANDS***","Below is the list of moderator only commands.")
   .addField("!Kick [@user] [Reason/Proof]","Kicks a user from the discord.")

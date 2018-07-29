@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setPresence({game: {name: "Version 1.19", type: 1}});
+  client.user.setPresence({game: {name: "Version 1.195", type: 1}});
 
 });
 
@@ -271,7 +271,7 @@ return message.guild.channels.get(modlog.id).send({embed});
 	
 	
 	
-if (command == "Poll") {
+if (command == "poll") {
   let modlog = message.guild.channels.find('name', 'polls');
   if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");

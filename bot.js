@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setPresence({game: {name: "Version 1.2", type: 1}});
+  client.user.setPresence({game: {name: "Version 1.22", type: 1}});
 
 });
 
@@ -292,13 +292,11 @@ if(command === "purge") {
 if (command==="report") {
   let modlog = message.guild.channels.find('name', 'reports');
   if (!message.member.roles.some(r=>["Middle Class Citizen"].includes(r.name)))
-    return message.reply("Unfortunately, you are unable to deport users with your current roles!");
+    return message.reply("Unfortunately, you are unable to report users with your current roles!");
 
   let member = message.mentions.members.first();
       if(!member)
         return message.reply("You are required to mention a **valid** member of this server!");
-      if(!member.kickable)
-        return message.reply("I cannot deport that user.");
 
   let reason = args.slice(1).join(' ');
     if(!reason)

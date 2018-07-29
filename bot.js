@@ -287,19 +287,12 @@ if (command==="disagreement") {
 
 if(command === "requestban") {
   let modlog = message.guild.channels.find('name', 'moderation-log');
-  let reqban = message.guild.channels.find('name', 'ban-requests');
-  if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["Middle Class Citizen"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
 
   const sayMessage = args.join(" ");
   message.delete().catch(O_o=>{});
 	
-  const embed2 = new Discord.RichEmbed()
-    .setColor('#ff0000')
-    .addField('Reporter:', `${message.author.username}#${message.author.discriminator}`)
-    .addField('Information:', `${sayMessage}`)
-  message.guild.channels.get(reqban.id).send({embed});
-
   const embed = new Discord.RichEmbed()
     .setColor('#ff0000')
     .addField('Reporter:', `${message.author.username}#${message.author.discriminator}`)

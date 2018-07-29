@@ -5,7 +5,7 @@ client.on('ready', () => {
   console.log('I am ready!');
  });
  
- client.o('message', message => {
+ client.on('message', message => {
   if (message.content === '!test') {
      message.reply('Test Confirmed and working!')
      }

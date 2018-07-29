@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setPresence({game: {name: "Version 1.165", type: 1}});
+  client.user.setPresence({game: {name: "Version 1.17", type: 1}});
 
 });
 
@@ -37,39 +37,55 @@ if (command=== "help") {
   let channel = message.author
   message.reply("You've been sent a list of commands in your DMs!")
 const embed = new Discord.RichEmbed()
-  .setColor(0x00AE86)
+  .setColor("#ff5900")
   .addField("**The prefix for this bot is:**","!")
   .addField("You can contact the owner of this bot on their Discord:","NorthTx_Dev#4196")
-  .addField("***COMMANDS***","Below is the list of commands.")
-  .addField("Kick [mention]","Kicks the user mentioned")
-  .addField("Ban [mention]","Bans the user mentioned.")
-  .addField("Requestban [Username:RblxUserID] [Reason + Proof]","Submits a ban request on your behalf, sending you a copy.")
-  .addField("Ping","Bot replies with server/API stats.")
-  //.addField("AddNSFW","Adds NSFW role, so you may access the channel.")
-  //.addField("RemoveNSFW","Removes NSFW role")
-  .addField("Lock","Locks channel where as only users with the Moderator role can speak in it.")
-  .addField("Unlock","Unlocks the channel")
-  .addField("Say [term]","Bot repeats term.")
-  .addField("Join","Summons the bot to your current voice channel! (no current music commands yet however)")
-  .addField("Purge [number]", "Removes [number] of messages from a channel!")
-  .addField("Embed [message]","Creates a embed with the message.")
-  .addField("Parents","Replies with Bot parenting info.")
-//  .addField("Deport", "Kicks the user, but sends  them a invite link to rejoin.")
-  .addField("DiscordInvite", "Replies with a invite to the discord.")
+  .addField("***MIDDLE CLASS CITIZEN ONLY COMMANDS***","Below is the list of civilian only commands.")
+  .addField("!Ping","Bot replies with server/API stats.")
+  .addField("!DiscordInvite","Reply's with the Discord Server Invite
+  .addField("!Report [@user] [Reason/Proof]","Reports a user to moderator's for breaking a discord rule.")
+  .addField("!Requestban [RblxUsername:RblxUserID] [Reason/Proof]","Requsts a ban on a subject for breaking a rule in game. (Logging, Exploiting)")
+  .addField("***MODERATOR ONLY COMMANDS***","Below is the list of moderator only commands.")
+  .addField("!Kick [@user] [Reason/Proof]","Kicks a user from the discord.")
+  .addField("!Ban [@user] [Reason/Proof]","Bans a user from the discord.")
+  .addField("!Lock","Locks the channel command was used in.")
+  .addField("!Unlock","Unlocks the channel command was used in.")
+  .addField("!Purge [Number]","Deletes [Number] of messages from channel.")
+  .addField("!Say [Message]","Repeats a message to make it fancy!")
+  .addField("!Bean [@user]","Joke Command")
+  .addField("!Deport [@user] [Reason]","Kicks user from server but sends an invite back. - Joke Command.")
+  .addField("***OWNER ONLY COMMANDS***","Below is a list of bot owner only commands!")
+  .addField("!Shutdown","Shuts the bot down in case of a hack or such things.")
+  .addField("!Setgame [Message]","Sets the bots [Playing: ______]")
 return channel.send({embed}).catch(console.error);
 };
-
-if (command=== "join") {
-  if (message.member.voiceChannel) {
-      message.member.voiceChannel.join()
-        .then(connection => { // Connection is an instance of VoiceConnection
-          message.reply('I have successfully connected to the channel!');
-        })
-        .catch(console.log);
-    } else {
-      message.reply('You need to join a voice channel first!');
-    }
-}
+	
+if (command=== "botinfoset") {
+  let channel = message.channel
+  message.reply("You've been sent a list of commands in your DMs!")
+const embed = new Discord.RichEmbed()
+  .setColor("#ff5900")
+  .addField("**The prefix for this bot is:**","!")
+  .addField("You can contact the owner of this bot on their Discord:","NorthTx_Dev#4196")
+  .addField("***MIDDLE CLASS CITIZEN ONLY COMMANDS***","Below is the list of civilian only commands.")
+  .addField("!Ping","Bot replies with server/API stats.")
+  .addField("!DiscordInvite","Reply's with the Discord Server Invite
+  .addField("!Report [@user] [Reason/Proof]","Reports a user to moderator's for breaking a discord rule.")
+  .addField("!Requestban [RblxUsername:RblxUserID] [Reason/Proof]","Requsts a ban on a subject for breaking a rule in game. (Logging, Exploiting)")
+  .addField("***MODERATOR ONLY COMMANDS***","Below is the list of moderator only commands.")
+  .addField("!Kick [@user] [Reason/Proof]","Kicks a user from the discord.")
+  .addField("!Ban [@user] [Reason/Proof]","Bans a user from the discord.")
+  .addField("!Lock","Locks the channel command was used in.")
+  .addField("!Unlock","Unlocks the channel command was used in.")
+  .addField("!Purge [Number]","Deletes [Number] of messages from channel.")
+  .addField("!Say [Message]","Repeats a message to make it fancy!")
+  .addField("!Bean [@user]","Joke Command")
+  .addField("!Deport [@user] [Reason]","Kicks user from server but sends an invite back. - Joke Command.")
+  .addField("***OWNER ONLY COMMANDS***","Below is a list of bot owner only commands!")
+  .addField("!Shutdown","Shuts the bot down in case of a hack or such things.")
+  .addField("!Setgame [Message]","Sets the bots [Playing: ______]")
+return channel.send({embed}).catch(console.error);
+};
 
 if (command==="kick") {
   let modlog = message.guild.channels.find('name', 'moderation-log');
@@ -273,17 +289,6 @@ if(command === "purge") {
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
-
-if (command==="disagreement") {
-	let modlog = message.channel
-	var mentioned = message.mentions.users.first()
-	const embed = new Discord.RichEmbed()
-   		 .setColor(0x00AE86)
-   		 .addField("If you disagree with how I want my group to be ran, organized, setup and operated, there's this fancy little button you can press. Link to the group too to make it easier for ya: ", " ")
-   		 .addField('Group:', `https://www.roblox.com/My/Groups.aspx?gid=4297537`)
-    	 .addField('Leave Group:', `https://gyazo.com/9752020486d35af7c744db1854b7bcae`)
- 	return message.guild.channels.get(modlog.id).send({embed});
-};
 	
 if (command==="report") {
   let modlog = message.guild.channels.find('name', 'reports');

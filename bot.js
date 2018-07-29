@@ -273,35 +273,6 @@ if (command === "bean") {
    message.channel.sendMessage("OMG YOU JUST TOTALLY BEANED "+mentioned+" https://cdn.discordapp.com/attachments/390604393134948355/397260159430164482/71po77VsbvL.png")
  };
 
-
-if (command === "North") {
-   message.channel.send("Builds the bot, helps with cars and creater of chassis/els!")
-};
-
-if (command === "State") {
-  message.channel.send("Our amazing car dev and north's bff")
-};
-
-if (command === "Rengate") {
-  message.channel.send("is just there cause he has money")
-};
-  
-if (command === "Mark") {
-  message.channel.send("is our bb scripter :)")
-};
-  
-if (command === "Gio") {
-  message.channel.send("who are you again?")
-};
-  
-if (command === "Zack") {
-  message.channel.send("some dumbass that put carpet in a burn-tower")
-};
-	
-if (command === "parents") {
-  message.channel.send("North is my father (My Creater), State is my evil step mother, Rengate is my cool rich big brother zack is my retarted brother. Gio is my idel and mark is well umm...")
-};	
-
 if(command === "purge") {
   if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");

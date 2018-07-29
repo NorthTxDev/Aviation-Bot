@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setPresence({game: {name: "Version 1.15", type: 1}});
+  client.user.setPresence({game: {name: "Version 1.16", type: 1}});
 
 });
 
@@ -284,6 +284,32 @@ if (command==="disagreement") {
     	 .addField('Leave Group:', `https://gyazo.com/9752020486d35af7c744db1854b7bcae`)
  	return message.guild.channels.get(modlog.id).send({embed});
 }
+	
+if (command==="report") {
+  let modlog = message.guild.channels.find('name', 'reports');
+  if (!message.member.roles.some(r=>["Middle Class Citizen"].includes(r.name)))
+    return message.reply("Unfortunately, you are unable to deport users with your current roles!");
+
+  let member = message.mentions.members.first();
+      if(!member)
+        return message.reply("You are required to mention a **valid** member of this server!");
+      if(!member.kickable)
+        return message.reply("I cannot deport that user.");
+
+  let reason = args.slice(1).join(' ');
+    if(!reason)
+      return message.reply("You are **required** to give a reason to report a user!");
+
+      message.channel.send(`${member} has been reported for ${reason}!`);
+
+  const embed = new Discord.RichEmbed()
+    .setColor('#ff0000')
+    .addField('Action:', 'Report')
+    .addField('User:', `${member}`)
+    .addField('Reporter:', `${message.author.username}#${message.author.discriminator}`)
+    .addField('Reason', reason);
+  return message.guild.channels.get(modlog.id).send({embed});
+};
 
 if(command === "requestban") {
   let modlog = message.guild.channels.find('name', 'ban-requests');
@@ -296,8 +322,7 @@ if(command === "requestban") {
   const embed = new Discord.RichEmbed()
     .setColor('#ff0000')
     .setTitle('Ban Request')
-    .setDescription('Reporter: ' `${message.author.username}#${message.author.discriminator}`
-		    'Information: ' `${sayMessage}`)
+    .setDescription('Use the !requestban [Information] to make a ban request!')
     .addField('Reporter:', `${message.author.username}#${message.author.discriminator}`)
     .addField('Information:', `${sayMessage}`)
   return message.guild.channels.get(modlog.id).send({embed});

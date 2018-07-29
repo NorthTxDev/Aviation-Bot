@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
@@ -130,43 +129,6 @@ if (command==="ban") {
   return message.guild.channels.get(modlog.id).send({embed});
 };
 	
-if (command==="warn") {
-  let modlog = message.guild.channels.find('name', 'moderation-log');
-  if (!message.member.roles.some(r=>["Moderator"].includes(r.name)))
-    return message.reply("Unfortunately, you are unable to warn users with your current roles!");
-
-  let member = message.mentions.members.first();
-      if(!member)
-        return message.reply("You are required to mention a **valid** member of this server!");
-
-  let reason = args.slice(1).join(' ');
-    if(!reason)
-      return message.reply("You are **required** to give a reason to warn a user!");
-	if(!warns[member.id]) warns[member.id] = {
-	warns: 0
-	};
-	
-	warns[member.id].warns++;
-	fs.writeFile("./warnings.json", JSON.stringify(warns) (err) => {
-		if (err) console.log(err);
-	});
-	
-	 const embed = new Discord.RichEmbed()
-  	  .setColor(0x00AE86)
-  	  .addField('Action:', 'Warn')
-  	  .addField('User:', `${member}`)
-  	  .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
-  	  .addField('Reason', reason)
-	  .addField('Channel', message.channel)
-	  .addField('Number of Warnings', warns[member.id].warns);
-	  
- 	 return message.guild.channels.get(modlog.id).send({embed});
-	
-    await member.send(`You have been warned in the State of Boeing Discord for **${reason}**`);
-        .catch(error => message.reply(`${message.author} I couldn't warn ${member} due to ${error}`));
-      message.channel.send(`${member} has been warned for ${reason}`);
-};
-
 if (command==="ping") {
   const m = await message.channel.send("Ping?");
     m.edit(`Pong. Latency is ${m.createdTimestamp - message.createdTimestamp}ms.  API Latency is ${Math.round(client.ping)}ms`);

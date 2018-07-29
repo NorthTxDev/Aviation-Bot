@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setPresence({game: {name: "Version 1.12", type: 1}});
+  client.user.setPresence({game: {name: "Version 1.13", type: 1}});
 
 });
 

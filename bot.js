@@ -286,7 +286,7 @@ if (command==="disagreement") {
 }
 
 if(command === "requestban") {
-  let modlog = message.guild.channels.find('name', 'moderation-log');
+  let modlog = message.guild.channels.find('name', 'ban-requests');
   if(!message.member.roles.some(r=>["Middle Class Citizen"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
 
@@ -295,6 +295,7 @@ if(command === "requestban") {
 	
   const embed = new Discord.RichEmbed()
     .setColor('#ff0000')
+    .setTitle('Ban Request')
     .addField('Reporter:', `${message.author.username}#${message.author.discriminator}`)
     .addField('Information:', `${sayMessage}`)
   return message.guild.channels.get(modlog.id).send({embed});

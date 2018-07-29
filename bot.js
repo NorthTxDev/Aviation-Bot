@@ -283,7 +283,7 @@ message.reply("Poll successfully Created.")
 const embed = new Discord.RichEmbed()
   .setColor("#0026ff")
   .setTitle('Poll')
-  .addDescription(sayMessage)
+  .setDescription(sayMessage)
 return message.guild.channels.get(modlog.id).send({embed});
 embed.react("👍")
 embed.react("✊")

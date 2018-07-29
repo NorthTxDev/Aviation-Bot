@@ -245,7 +245,7 @@ if (command == "unlock") {
   let modlog = message.guild.channels.find('name', 'moderation-log');
 	if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
-	let role = message.guild.roles.find("name", "Verified");
+	let role = message.guild.roles.find("name", "Middle Class Citizen");
 	message.channel.overwritePermissions(
         role,
         { 'SEND_MESSAGES': true },

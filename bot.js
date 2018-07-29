@@ -42,7 +42,7 @@ client.on("message", async message => {
   if(message.author.bot) return;
   if(message.content.indexOf('!') !== 0) return;
 
-  const args = message.content.slice(1).trim().split(! +/g);
+  const args = message.content.slice(1).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
 if (command=== "help") {
@@ -98,7 +98,7 @@ if (command==="kick") {
     if(!reason)
       return message.reply("You are **required** to give a reason to kick a user!");
 
-    await member.send(`You have been kicked from the Department of Public Works Discord for **${reason}**`);
+    await member.send(`You have been kicked from the State of Boeing Discord for **${reason}**`);
     await member.kick(reason)
         .catch(error => message.reply(`${message.author} I couldn't kick ${member} due to ${error}`));
       message.channel.send(`${member} has been kicked for ${reason}`);
@@ -127,7 +127,7 @@ if (command==="ban") {
     if(!reason)
       return message.reply("You are **required** to give a reason to ban a user!");
 
-    await member.send(`You have been kicked from the Department of Public Works Discord for **${reason}**`);
+    await member.send(`You have been kicked from the State of Boeing Discord for **${reason}**`);
     await member.ban(reason)
         .catch(error => message.reply(`${message.author} I couldn't ban ${member} due to ${error}`));
       message.channel.send(`${member} has been banned for ${reason}`);
@@ -166,7 +166,7 @@ if (command==="deport") {
     if(!reason)
       return message.reply("You are **required** to give a reason to deport a user!");
 
-    await member.send(`You have been deported from the Department of Public Works Discord for **${reason}**.  Here is a link to rejoin: https://discord.gg/tkyEfyR`);
+    await member.send(`You have been deported from the State of Boeing Discord for **${reason}**.  Here is a link to rejoin: https://discord.gg/tkyEfyR`);
     await member.kick(reason)
         .catch(error => message.reply(`${message.author} I couldn't deport ${member} due to ${error}`));
       message.channel.send(`${member} has been deported for ${reason}`);
@@ -275,7 +275,7 @@ if (command === "bean") {
 
 
 if (command === "North") {
-   message.channel.send("Builds the bot, helps with car and creater of chassis/els!")
+   message.channel.send("Builds the bot, helps with cars and creater of chassis/els!")
 };
 
 if (command === "State") {

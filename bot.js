@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setPresence({game: {name: "Version 1.25", type: 1}});
+  client.user.setPresence({game: {name: "Version 1.26", type: 1}});
 
 });
 
@@ -75,7 +75,9 @@ const embed = new Discord.RichEmbed()
   .addField("**Boeing Department of Corrections**","https://discord.gg/nCFfZZE")
   .addField("**Boeing Department of Transportation**","DISCORD NOT SET UP YET")
   .addField("**Alpine County Sheriffs Department**","DISCORD NOT SET UP YET")
-  .addField("**Alpine County Fire Rescue**","DISCORD NOT SET UP YET")
+  .addField("**CLOSED TO CIVILIAN DISCORDS**","Below begins the list of discords closed to civilians")
+  .addField("*Department of Homeland Security**","CLOSED TO CIVILIANS")
+  .addField("**Alpine County Fire Rescue**","CLOSED TO CIVILIANS")
 return channel.send({embed}).catch(console.error);
 };
 

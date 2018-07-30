@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setPresence({game: {name: "Version 1.23", type: 1}});
+  client.user.setPresence({game: {name: "Version 1.24", type: 1}});
 
 });
 
@@ -43,6 +43,7 @@ const embed = new Discord.RichEmbed()
   .addField("***MIDDLE CLASS CITIZEN ONLY COMMANDS***","Below is the list of civilian only commands.")
   .addField("!Ping","Bot replies with server/API stats.")
   .addField("!DiscordInvite","Replys with the Discord Server Invite")
+  .addField("!DepDiscords","Replys in your DM's with a list of Department Discords")
   .addField("!Report [@user] [Reason/Proof]","Reports a user to moderators for breaking a discord rule.")
   .addField("!Requestban [RblxUsername:RblxUserID] [Reason/Proof]","Requsts a ban on a subject for breaking a rule in game. (Logging, Exploiting)")
   .addField("***MODERATOR ONLY COMMANDS***","Below is the list of moderator only commands.")
@@ -69,10 +70,10 @@ const embed = new Discord.RichEmbed()
   .setDescription("**Below is a list of all the department discords if they are open to civilians!**")
   .addField("You can contact the owner of this bot on their Discord:","NorthTx_Dev#4196")
   .addField("**OPEN TO CIVILIAN DISCORDS**","Below begins the list of discords open to civilians")
-  .addField("**Boeing Law Enforcement Academy","https://discord.gg/ZUHVbcZ")
-  .addField("**Boeing Department of Public Safety","DISCORD NOT SET UP YET")
-  .addField("**Boeing Department of Corrections","DISCORD NOT SET UP YET")
-  .addField("**Boeing Department of Transportation","DISCORD NOT SET UP YET")
+  .addField("**Boeing Law Enforcement Academy**","https://discord.gg/ZUHVbcZ")
+  .addField("**Boeing Department of Public Safety**","DISCORD NOT SET UP YET")
+  .addField("**Boeing Department of Corrections**","DISCORD NOT SET UP YET")
+  .addField("**Boeing Department of Transportation**","DISCORD NOT SET UP YET")
   .addField("**Alpine County Sheriffs Department**","DISCORD NOT SET UP YET")
   .addField("**Alpine County Fire Rescue**","DISCORD NOT SET UP YET")
 return channel.send({embed}).catch(console.error);

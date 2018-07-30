@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setPresence({game: {name: "Version 1.22", type: 1}});
+  client.user.setPresence({game: {name: "Version 1.23", type: 1}});
 
 });
 
@@ -57,6 +57,24 @@ const embed = new Discord.RichEmbed()
   .addField("***OWNER ONLY COMMANDS***","Below is a list of bot owner only commands!")
   .addField("!Shutdown","Shuts the bot down in case of a hack or such things.")
   .addField("!Setgame [Message]","Sets the bots [Playing: ______]")
+return channel.send({embed}).catch(console.error);
+};
+	
+if (command=== "depdiscords") {
+  let channel = message.author
+  message.reply("You've been sent a list of discords in your DMs!")
+const embed = new Discord.RichEmbed()
+  .setColor("#ff5900")
+  .setTitle("Department Discords")
+  .setDescription("**Below is a list of all the department discords if they are open to civilians!**")
+  .addField("You can contact the owner of this bot on their Discord:","NorthTx_Dev#4196")
+  .addField("**OPEN TO CIVILIAN DISCORDS**","Below begins the list of discords open to civilians")
+  .addField("**Boeing Law Enforcement Academy","https://discord.gg/ZUHVbcZ")
+  .addField("**Boeing Department of Public Safety","DISCORD NOT SET UP YET")
+  .addField("**Boeing Department of Corrections","DISCORD NOT SET UP YET")
+  .addField("**Boeing Department of Transportation","DISCORD NOT SET UP YET")
+  .addField("**Alpine County Sheriffs Department**","DISCORD NOT SET UP YET")
+  .addField("**Alpine County Fire Rescue**","DISCORD NOT SET UP YET")
 return channel.send({embed}).catch(console.error);
 };
 

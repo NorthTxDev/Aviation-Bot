@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setPresence({game: {name: "Version 1.26", type: 1}});
+  client.user.setPresence({game: {name: "Version 1.27", type: 1}});
 
 });
 
@@ -76,7 +76,7 @@ const embed = new Discord.RichEmbed()
   .addField("**Boeing Department of Transportation**","DISCORD NOT SET UP YET")
   .addField("**Alpine County Sheriffs Department**","DISCORD NOT SET UP YET")
   .addField("**CLOSED TO CIVILIAN DISCORDS**","Below begins the list of discords closed to civilians")
-  .addField("*Department of Homeland Security**","CLOSED TO CIVILIANS")
+  .addField("**Department of Homeland Security**","CLOSED TO CIVILIANS")
   .addField("**Alpine County Fire Rescue**","CLOSED TO CIVILIANS")
 return channel.send({embed}).catch(console.error);
 };
@@ -298,7 +298,7 @@ if (command === "bean") {
  };
 
 if(command === "purge") {
-  if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["Founder(S)"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     const deleteCount = parseInt(args[0], 10);
 

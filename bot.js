@@ -330,7 +330,7 @@ if (command==="report") {
     .addField('Action:', 'Report')
     .addField('User:', `${member}`)
     .addField('Reporter:', `${message.author.username}#${message.author.discriminator}`)
-    .addField('Reason', reason);
+    .addField('Reason:', reason);
   return message.guild.channels.get(modlog.id).send({embed});
 };
 

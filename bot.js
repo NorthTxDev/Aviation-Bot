@@ -298,7 +298,7 @@ if (command === "bean") {
  };
 
 if(command === "purge") {
-  if(!message.member.roles.some(r=>["Founder(S)"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["Founder(s)"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     const deleteCount = parseInt(args[0], 10);
 

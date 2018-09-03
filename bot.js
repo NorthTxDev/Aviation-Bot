@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setPresence({game: {name: "Version 1.12", type: 1}});
+  client.user.setPresence({game: {name: "Version 1.13", type: 1}});
 
 });
 
@@ -12,7 +12,7 @@ client.on("guildCreate", guild => {
 });
 
 client.on("messageDelete", (messageDelete) => {
- let modlog = messageDelete.guild.channels.find('name', 'moderation-log');
+ let modlog = messageDelete.guild.channels.find('name', 'logs-2');
  const embed = new Discord.RichEmbed()
    .setColor(0x00AE86)
    .addField('Action:', 'Message Deleted' )
@@ -38,12 +38,11 @@ if (command=== "help") {
   message.reply("You've been sent a list of commands in your DMs!")
 const embed = new Discord.RichEmbed()
   .setColor("#ff5900")
-  .addField("**The prefix for this bot is:**","!")
+  .addField("**The prefix for this bot is:**","-")
   .addField("You can contact the owner of this bot on their Discord:","NorthTx_Dev#4196")
-  .addField("***MIDDLE CLASS CITIZEN ONLY COMMANDS***","Below is the list of civilian only commands.")
+  .addField("***COUNTY RESIDENT ONLY COMMANDS***","Below is the list of civilian only commands.")
   .addField("!Ping","Bot replies with server/API stats.")
   .addField("!DiscordInvite","Replys with the Discord Server Invite")
-  .addField("!DepDiscords","Replys in your DM's with a list of Department Discords")
   .addField("!Report [@user] [Reason/Proof]","Reports a user to moderators for breaking a discord rule.")
   .addField("!Requestban [RblxUsername:RblxUserID] [Reason/Proof]","Requsts a ban on a subject for breaking a rule in game. (Logging, Exploiting)")
   .addField("***MODERATOR ONLY COMMANDS***","Below is the list of moderator only commands.")
@@ -60,30 +59,10 @@ const embed = new Discord.RichEmbed()
   .addField("!Setgame [Message]","Sets the bots [Playing: ______]")
 return channel.send({embed}).catch(console.error);
 };
-	
-if (command=== "depdiscords") {
-  let channel = message.author
-  message.reply("You've been sent a list of discords in your DMs!")
-const embed = new Discord.RichEmbed()
-  .setColor("#ff5900")
-  .setTitle("Department Discords")
-  .setDescription("**Below is a list of all the department discords if they are open to civilians!**")
-  .addField("You can contact the owner of this bot on their Discord:","NorthTx_Dev#4196")
-  .addField("**OPEN TO CIVILIAN DISCORDS**","Below begins the list of discords open to civilians")
-  .addField("**Boeing Law Enforcement Academy**","https://discord.gg/ZUHVbcZ")
-  .addField("**Boeing Department of Public Safety**","DISCORD NOT SET UP YET")
-  .addField("**Boeing Department of Corrections**","https://discord.gg/nCFfZZE")
-  .addField("**Boeing Department of Transportation**","DISCORD NOT SET UP YET")
-  .addField("**Alpine County Sheriffs Department**","DISCORD NOT SET UP YET")
-  .addField("**CLOSED TO CIVILIAN DISCORDS**","Below begins the list of discords closed to civilians")
-  .addField("**Department of Homeland Security**","CLOSED TO CIVILIANS")
-  .addField("**Alpine County Fire Rescue**","CLOSED TO CIVILIANS")
-return channel.send({embed}).catch(console.error);
-};
 
 if (command==="kick") {
-  let modlog = message.guild.channels.find('name', 'moderation-log');
-  if (!message.member.roles.some(r=>["Moderator"].includes(r.name)))
+  let modlog = message.guild.channels.find('name', 'logs-2');
+  if (!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)))
     return message.reply("Unfortunately, you are unable to kick users with your current roles!");
 
   let member = message.mentions.members.first();
@@ -111,8 +90,8 @@ if (command==="kick") {
 };
 
 if (command==="ban") {
-  let modlog = message.guild.channels.find('name', 'moderation-log');
-  if (!message.member.roles.some(r=>["Moderator"].includes(r.name)))
+  let modlog = message.guild.channels.find('name', 'logs-2');
+  if (!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)))
     return message.reply("Unfortunately, you are unable to ban users with your current roles!");
 
   let member = message.mentions.members.first();
@@ -145,13 +124,13 @@ if (command==="ping") {
 };
 
 if (command==="DiscordInvite") {
-	message.reply("Here is an invite to join the discord! https://discord.gg/tkyEfyR")
+	message.reply("Here is an invite to join the discord! https://discord.gg/rqhpSGe")
 }
 	
 	
 if (command==="deport") {
-  let modlog = message.guild.channels.find('name', 'moderation-log');
-  if (!message.member.roles.some(r=>["Moderator"].includes(r.name)))
+  let modlog = message.guild.channels.find('name', 'logs-2');
+  if (!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)))
     return message.reply("Unfortunately, you are unable to deport users with your current roles!");
 
   let member = message.mentions.members.first();
@@ -164,7 +143,7 @@ if (command==="deport") {
     if(!reason)
       return message.reply("You are **required** to give a reason to deport a user!");
 
-    await member.send(`You have been deported from the State of Boeing Discord for **${reason}**.  Here is a link to rejoin: https://discord.gg/tkyEfyR`);
+    await member.send(`You have been deported from the State of Boeing Discord for **${reason}**.  Here is a link to rejoin: https://discord.gg/rqhpSGe`);
     await member.kick(reason)
         .catch(error => message.reply(`${message.author} I couldn't deport ${member} due to ${error}`));
       message.channel.send(`${member} has been deported for ${reason}`);
@@ -203,7 +182,7 @@ if (command==="setgame") {
 };
 
 if (command==="shutdown") {
-  let modlog = message.guild.channels.find('name', 'moderation-log');
+  let modlog = message.guild.channels.find('name', 'logs-2');
   if (message.author.id == "247481591524229120") {
     await message.reply("I am now shuttingdown.....Goodbye.")
     const embed = new Discord.RichEmbed()
@@ -217,10 +196,10 @@ if (command==="shutdown") {
 };
 
 if (command == "lock") {
-  let modlog = message.guild.channels.find('name', 'moderation-log');
-  if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
+  let modlog = message.guild.channels.find('name', 'logs-2');
+  if(!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
-	let role = message.guild.roles.find("name", "Middle Class Citizen");
+	let role = message.guild.roles.find("name", "verified");
 	message.channel.overwritePermissions(
         role,
         { 'SEND_MESSAGES': false },
@@ -240,10 +219,10 @@ return message.guild.channels.get(modlog.id).send({embed});
 };
 
 if (command == "unlock") {
-  let modlog = message.guild.channels.find('name', 'moderation-log');
-	if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
+  let modlog = message.guild.channels.find('name', 'logs-2');
+	if(!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
-	let role = message.guild.roles.find("name", "Middle Class Citizen");
+	let role = message.guild.roles.find("name", "verified");
 	message.channel.overwritePermissions(
         role,
         { 'SEND_MESSAGES': true },
@@ -266,8 +245,8 @@ return message.guild.channels.get(modlog.id).send({embed});
 	
 	
 if (command == "poll") {
-  let modlog = message.guild.channels.find('name', 'moderation-logs');
-  if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
+  let modlog = message.guild.channels.find('name', 'logs-2');
+  if(!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
 	
 	const sayMessage = args.join(" ");
@@ -290,7 +269,7 @@ return message.guild.channels.get(modlog.id).send({embed});
 
 
 if (command === "bean") {
-  if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
 
    var mentioned = message.mentions.users.first()
@@ -298,7 +277,7 @@ if (command === "bean") {
  };
 
 if(command === "purge") {
-  if(!message.member.roles.some(r=>["Founder(s)"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     const deleteCount = parseInt(args[0], 10);
 
@@ -312,7 +291,7 @@ if(command === "purge") {
 	
 if (command==="report") {
   let modlog = message.guild.channels.find('name', 'reports');
-  if (!message.member.roles.some(r=>["Middle Class Citizen"].includes(r.name)))
+  if (!message.member.roles.some(r=>["County Resident"].includes(r.name)))
     return message.reply("Unfortunately, you are unable to report users with your current roles!");
 
   let member = message.mentions.members.first();
@@ -336,7 +315,7 @@ if (command==="report") {
 
 if(command === "requestban") {
   let modlog = message.guild.channels.find('name', 'ban-requests');
-  if(!message.member.roles.some(r=>["Middle Class Citizen"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["County Resident"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
 
   const sayMessage = args.join(" ");
@@ -352,8 +331,8 @@ if(command === "requestban") {
 
 };
 if(command === "say") {
-  let modlog = message.guild.channels.find('name', 'moderation-log');
-  if(!message.member.roles.some(r=>["Moderator"].includes(r.name)) )
+  let modlog = message.guild.channels.find('name', 'logs-2');
+  if(!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
 
   const sayMessage = args.join(" ");

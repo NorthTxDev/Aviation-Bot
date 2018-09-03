@@ -62,7 +62,7 @@ return channel.send({embed}).catch(console.error);
 
 if (command==="kick") {
   let modlog = message.guild.channels.find('name', 'logs-2');
-  if (!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)))
+  if (!message.member.roles.some(r=>["SERVER_PERM"].includes(r.name)))
     return message.reply("Unfortunately, you are unable to kick users with your current roles!");
 
   let member = message.mentions.members.first();
@@ -91,7 +91,7 @@ if (command==="kick") {
 
 if (command==="ban") {
   let modlog = message.guild.channels.find('name', 'logs-2');
-  if (!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)))
+  if (!message.member.roles.some(r=>["SERVER_PERM"].includes(r.name)))
     return message.reply("Unfortunately, you are unable to ban users with your current roles!");
 
   let member = message.mentions.members.first();
@@ -130,7 +130,7 @@ if (command==="DiscordInvite") {
 	
 if (command==="deport") {
   let modlog = message.guild.channels.find('name', 'logs-2');
-  if (!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)))
+  if (!message.member.roles.some(r=>["SERVER_PERM"].includes(r.name)))
     return message.reply("Unfortunately, you are unable to deport users with your current roles!");
 
   let member = message.mentions.members.first();
@@ -197,7 +197,7 @@ if (command==="shutdown") {
 
 if (command == "lock") {
   let modlog = message.guild.channels.find('name', 'logs-2');
-  if(!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["SERVER_PERM"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
 	let role = message.guild.roles.find("name", "verified");
 	message.channel.overwritePermissions(
@@ -220,7 +220,7 @@ return message.guild.channels.get(modlog.id).send({embed});
 
 if (command == "unlock") {
   let modlog = message.guild.channels.find('name', 'logs-2');
-	if(!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)) )
+	if(!message.member.roles.some(r=>["SERVER_PERM"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
 	let role = message.guild.roles.find("name", "verified");
 	message.channel.overwritePermissions(
@@ -246,7 +246,7 @@ return message.guild.channels.get(modlog.id).send({embed});
 	
 if (command == "poll") {
   let modlog = message.guild.channels.find('name', 'logs-2');
-  if(!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["SERVER_PERM"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
 	
 	const sayMessage = args.join(" ");
@@ -269,7 +269,7 @@ return message.guild.channels.get(modlog.id).send({embed});
 
 
 if (command === "bean") {
-  if(!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["SERVER_PERM"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
 
    var mentioned = message.mentions.users.first()
@@ -277,7 +277,7 @@ if (command === "bean") {
  };
 
 if(command === "purge") {
-  if(!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["SERVER_PERM"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     const deleteCount = parseInt(args[0], 10);
 
@@ -332,7 +332,7 @@ if(command === "requestban") {
 };
 if(command === "say") {
   let modlog = message.guild.channels.find('name', 'logs-2');
-  if(!message.member.roles.some(r=>["SERVER_PERMS"].includes(r.name)) )
+  if(!message.member.roles.some(r=>["SERVER_PERM"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
 
   const sayMessage = args.join(" ");

@@ -75,7 +75,7 @@ if (command==="kick") {
     if(!reason)
       return message.reply("You are **required** to give a reason to kick a user!");
 
-    await member.send(`You have been kicked from the State of Boeing Discord for **${reason}**`);
+    await member.send(`You have been kicked from the Riverside Discord for **${reason}**`);
     await member.kick(reason)
         .catch(error => message.reply(`${message.author} I couldn't kick ${member} due to ${error}`));
       message.channel.send(`${member} has been kicked for ${reason}`);
@@ -104,7 +104,7 @@ if (command==="ban") {
     if(!reason)
       return message.reply("You are **required** to give a reason to ban a user!");
 
-    await member.send(`You have been kicked from the State of Boeing Discord for **${reason}**`);
+    await member.send(`You have been kicked from the Riverside Discord for **${reason}**`);
     await member.ban(reason)
         .catch(error => message.reply(`${message.author} I couldn't ban ${member} due to ${error}`));
       message.channel.send(`${member} has been banned for ${reason}`);

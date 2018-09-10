@@ -259,7 +259,6 @@ const embed = new Discord.RichEmbed()
   .setColor("#0026ff")
   .setTitle('Poll Created')
   .setDescription(sayMessage)
-  .React("👎")
 return message.guild.channels.get(modlog.id).send({embed});
 
 };

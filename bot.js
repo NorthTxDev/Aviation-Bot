@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setPresence({game: {name: "Version 1.14", type: 1}});
+  client.user.setPresence({game: {name: "Version 1.15", type: 1}});
 
 });
 
@@ -259,6 +259,7 @@ const embed = new Discord.RichEmbed()
   .setColor("#0026ff")
   .setTitle('Poll Created')
   .setDescription(sayMessage)
+  .React("👎")
 return message.guild.channels.get(modlog.id).send({embed});
 
 };

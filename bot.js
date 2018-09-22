@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-  client.user.setPresence({game: {name: "Version 1.15", type: 1}});
+  client.user.setPresence({game: {name: "Version 1.16", type: 1}});
 
 });
 
@@ -143,7 +143,7 @@ if (command==="deport") {
     if(!reason)
       return message.reply("You are **required** to give a reason to deport a user!");
 
-    await member.send(`You have been deported from the State of Boeing Discord for **${reason}**.  Here is a link to rejoin: https://discord.gg/rqhpSGe`);
+    await member.send(`You have been deported from the County of Riverside Discord for **${reason}**.  Here is a link to rejoin: https://discord.gg/rqhpSGe`);
     await member.kick(reason)
         .catch(error => message.reply(`${message.author} I couldn't deport ${member} due to ${error}`));
       message.channel.send(`${member} has been deported for ${reason}`);
